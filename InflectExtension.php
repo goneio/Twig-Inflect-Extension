@@ -20,9 +20,9 @@ class InflectExtension extends \Twig_Extension
 
     public function pluralFilter($word, $count = null)
     {
-        if($count){
+        if ($count) {
             return Inflect::pluralizeIf($count, $word);
-        }else {
+        } else {
             return Inflect::pluralize($word);
         }
     }
