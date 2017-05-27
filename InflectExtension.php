@@ -21,7 +21,7 @@ class InflectExtension extends \Twig_Extension
     public function pluralFilter($word, $count = null)
     {
         if($count){
-            return Inflect::pluralizeIf($word, $count);
+            return Inflect::pluralizeIf($count, $word);
         }else {
             return Inflect::pluralize($word);
         }
