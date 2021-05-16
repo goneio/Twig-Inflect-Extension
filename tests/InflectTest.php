@@ -3,25 +3,28 @@ namespace MatthewBaggett\Tests;
 
 use MatthewBaggett\Twig\InflectExtension;
 use PHPUnit\Framework\TestCase;
+use Twig\Loader\ArrayLoader;
+use Twig\Environment;
+use Twig\Loader\LoaderInterface;
 
 class InflectTest extends TestCase
 {
-    /** @var \Twig_Environment */
+    /** @var Environment */
     private $twig;
-    /** @var \Twig_LoaderInterface */
+    /** @var LoaderInterface */
     private $loader;
 
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
-        $this->loader = new \Twig_Loader_Array([]);
-        $this->twig = new \Twig_Environment($this->loader);
+        $this->loader = new ArrayLoader([]);
+        $this->twig = new Environment($this->loader);
         $this->twig->addExtension(new InflectExtension());
     }
 
     public function testNoop()
     {
-        $this->twig->setLoader(new \Twig_Loader_Array([
+        $this->twig->setLoader(new ArrayLoader([
             'testNoop'          => "{{ test_phrase }}",
         ]));
         $this->assertEquals("Test Words", $this->twig->render('testNoop', ['test_phrase' => 'Test Words']));
@@ -29,7 +32,7 @@ class InflectTest extends TestCase
 
     public function testPluralise()
     {
-        $this->twig->setLoader(new \Twig_Loader_Array([
+        $this->twig->setLoader(new ArrayLoader([
             'test'          => "{{ test_phrase|plural }}",
         ]));
         $this->assertEquals("hats", $this->twig->render('test', ['test_phrase' => 'hat']));
@@ -38,7 +41,7 @@ class InflectTest extends TestCase
 
     public function testPluraliserOneInstance()
     {
-        $this->twig->setLoader(new \Twig_Loader_Array([
+        $this->twig->setLoader(new ArrayLoader([
             'test'          => "{{ test_phrase|plural(1) }}",
         ]));
         $this->assertEquals("1 hat", $this->twig->render('test', ['test_phrase' => 'hat']));
@@ -47,7 +50,7 @@ class InflectTest extends TestCase
 
     public function testPluraliserTwoInstances()
     {
-        $this->twig->setLoader(new \Twig_Loader_Array([
+        $this->twig->setLoader(new ArrayLoader([
             'test'          => "{{ test_phrase|plural(2) }}",
         ]));
         $this->assertEquals("2 hats", $this->twig->render('test', ['test_phrase' => 'hat']));
@@ -56,7 +59,7 @@ class InflectTest extends TestCase
 
     public function testSingularise()
     {
-        $this->twig->setLoader(new \Twig_Loader_Array([
+        $this->twig->setLoader(new ArrayLoader([
             'test'          => "{{ test_phrase|singular }}",
         ]));
         $this->assertEquals("hat", $this->twig->render('test', ['test_phrase' => 'hats']));

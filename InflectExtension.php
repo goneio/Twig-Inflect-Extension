@@ -2,14 +2,16 @@
 namespace MatthewBaggett\Twig;
 
 use MatthewBaggett\Inflection\Inflect;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 
-class InflectExtension extends \Twig_Extension
+class InflectExtension extends AbstractExtension
 {
     public function getFilters()
     {
         return array(
-            'singular' => new \Twig_SimpleFilter('singular', [$this, 'singularFilter']),
-            'plural'   => new \Twig_SimpleFilter('plural', [$this, 'pluralFilter']),
+            'singular' => new TwigFilter('singular', [$this, 'singularFilter']),
+            'plural'   => new TwigFilter('plural', [$this, 'pluralFilter']),
         );
     }
 
