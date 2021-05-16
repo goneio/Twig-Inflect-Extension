@@ -1,5 +1,6 @@
 {
     "name": "matthewbaggett/twig-extension-inflect",
+    "description": "Trivially pluralise or singularise strings in twig.",
     "type": "library",
     "require": {
         "php": "^7.0 || ^8.0",
@@ -29,5 +30,4 @@
             "MatthewBaggett\\Twig\\Tests\\": "tests"
         }
     }
-
 }
