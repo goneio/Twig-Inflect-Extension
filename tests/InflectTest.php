@@ -1,7 +1,7 @@
 <?php
-namespace Gone\Tests;
+namespace MatthewBaggett\Tests;
 
-use Gone\Twig\InflectExtension;
+use MatthewBaggett\Twig\InflectExtension;
 use PHPUnit\Framework\TestCase;
 
 class InflectTest extends TestCase

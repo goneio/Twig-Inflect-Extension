@@ -1,7 +1,7 @@
 <?php
-namespace Gone\Twig;
+namespace MatthewBaggett\Twig;
 
-use Gone\Inflection\Inflect;
+use MatthewBaggett\Inflection\Inflect;
 
 class InflectExtension extends \Twig_Extension
 {
